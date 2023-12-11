@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.example</groupId>
     <artifactId>phone-book-app</artifactId>
@@ -11,6 +11,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok-version>1.18.30</lombok-version>
         <gson-version>2.10.1</gson-version>
+        <junit-jupiter-api.version>5.10.1</junit-jupiter-api.version>
+        <junit-jupiter-params.version>5.10.1</junit-jupiter-params.version>
+        <mockito.version>5.7.0</mockito.version>
     </properties>
 
     <dependencies>
@@ -41,7 +44,31 @@
             <artifactId>log4j-core</artifactId>
             <version>2.22.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter-api.version}</version>
+            <scope>test</scope>
+        </dependency>
 
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit-jupiter-params.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 </project>

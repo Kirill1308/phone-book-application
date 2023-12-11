@@ -18,7 +18,7 @@ public class ConsoleViewProvider {
     }
 
     public void printAvailableActions() {
-        logger.info("Printing available actions for the user.");
+       logger.info("Printing available actions for the user.");
         System.out.println("""
                 Select an option:
                 1. Create a new contact

@@ -39,19 +39,20 @@ public class ContactDeleter {
                     executeFileDeletion(file, contact);
                     return;
                 } else {
-                    System.out.println("Contact is null in deleteContactInFiles.");
+                    logger.warn("Contact is null in deleteContactInFiles.");
                 }
             }
         }
     }
 
-    public void executeFileDeletion(File file, Contact contact) {
-        logger.info("Executing file deletion: {}", contact);
-
+    private void executeFileDeletion(File file, Contact contactToDelete) {
         if (file.delete()) {
-            System.out.println(contact.getName() + " was successfully deleted.");
+            logger.info("Contact '{}' has been successfully deleted", contactToDelete.getName());
+            System.out.println(contactToDelete.getName() + " has been successfully deleted");
         } else {
-            System.out.println("Unable to delete the contact.");
+            logger.error("Failed to delete contact '{}'", contactToDelete.getName());
+            System.out.println("Failed to delete contact " + contactToDelete.getName());
         }
     }
+
 }

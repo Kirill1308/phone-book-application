@@ -2,6 +2,7 @@ package org.example.io;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.contact.Contact;
@@ -48,13 +49,16 @@ public class FileHandler {
 
     public Contact readContactFromFile(File file) {
         logger.info("Reading contact from file: {}", file.getName());
-        try {
-            return gson.fromJson(new FileReader(file), Contact.class);
+
+        try (FileReader fileReader = new FileReader(file)) {
+            return gson.fromJson(fileReader, Contact.class);
+        } catch (JsonSyntaxException e) {
+            logger.error("Error parsing JSON while trying to read the contact. Detail: {}", e.getMessage(), e);
         } catch (IOException e) {
             logger.error("An error occurred while trying to read the contact. Detail: {}", e.getMessage(), e);
-            System.out.println("An error occurred while trying to read the contact: " + e.getMessage());
-            return null;
         }
+
+        return null;
     }
 
     public void displayContactNames(File[] files) {
