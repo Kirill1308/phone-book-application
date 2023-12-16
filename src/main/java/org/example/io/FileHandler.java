@@ -14,8 +14,7 @@ import java.io.IOException;
 
 public class FileHandler {
     private static final Logger logger = LogManager.getLogger(FileHandler.class);
-    private static final String DIRECTORY_PATH = "src/main/resources/contacts";
-    private static final String FILE_PATH = "src/main/resources/contacts/";
+    private static final String DIRECTORY_PATH = "C:\\Users\\kpopo\\IdeaProjects\\phone-book-application\\src\\main\\resources\\contacts";
     private final Gson gson;
 
     public FileHandler() {
@@ -24,11 +23,12 @@ public class FileHandler {
 
     public void writeFile(Contact contact) {
         logger.info("Started writing to file for contact: {}", contact.getName());
+        String filePath = DIRECTORY_PATH + File.separator + contact.getName() + ".json";
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(contact);
 
-        try (FileWriter writer = new FileWriter(FILE_PATH + contact.getName() + ".json")) {
+        try (FileWriter writer = new FileWriter(filePath)) {
             writer.write(json);
             writer.write(System.lineSeparator());
         } catch (IOException e) {
